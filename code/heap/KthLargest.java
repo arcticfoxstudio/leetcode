@@ -2,7 +2,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- * @subject 703.堆排序 - 第K大的元素
+ * @subject 703.heap - 第K大的元素
  * @link    https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/
  * @level   Easy
  * @desc    设计一个找到数据流中第K大元素的类（class）。注意是排序后的第K大元素，不是第K个不同的元素。

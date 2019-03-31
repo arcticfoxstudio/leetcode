@@ -1,7 +1,7 @@
 import java.util.Stack;
 
 /**
- * @subject 232. Stack - 用栈实现队列
+ * @subject 232. stack - 用栈实现队列
  * @link    https://leetcode-cn.com/problems/implement-queue-using-stacks/
  * @level   Easy
  * @desc    使用栈实现队列的下列操作：
