@@ -1,0 +1,384 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>973.最接近原点的 K 个点(Normal) · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="703_KthLargest.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Stack
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../stack/232_MyQueue.html">
+            
+                <a href="../stack/232_MyQueue.html">
+            
+                    
+                    232.用栈实现队列(Easy)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Heap
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="703_KthLargest.html">
+            
+                <a href="703_KthLargest.html">
+            
+                    
+                    703.数据流中的第K大元素(Easy)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="973_kClosest.html">
+            
+                <a href="973_kClosest.html">
+            
+                    
+                    973.最接近原点的 K 个点(Normal)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >973.最接近原点的 K 个点(Normal)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="973heap---&#x6700;&#x63A5;&#x8FD1;&#x539F;&#x70B9;&#x7684;-k-&#x4E2A;&#x70B9;">973.heap - &#x6700;&#x63A5;&#x8FD1;&#x539F;&#x70B9;&#x7684; K &#x4E2A;&#x70B9;</h1>
+<hr>
+<h3 id="&#x601D;&#x8DEF;">&#x601D;&#x8DEF;</h3>
+<p>&#x7B2C;K&#x5927;&#xFF0C;&#x7528;&#x5C0F;&#x9876;&#x5806;&#xFF1B;&#x7B2C;K&#x5C0F;&#xFF0C;&#x7528;&#x5927;&#x9876;&#x5806;&#xFF1B;&#x7EF4;&#x62A4;&#x5BB9;&#x91CF;&#x4E3A;K&#x7684;&#x5806;&#x3002;</p>
+<p>&#x5C0F;&#x9876;&#x5806;&#xFF0C;&#x5806;&#x9876;&#x5C31;&#x662F;&#x7B2C;K&#x5C0F;&#xFF1B;&#x5927;&#x9876;&#x5806;&#xFF0C;&#x5806;&#x9876;&#x662F;&#x7B2C;K&#x5927;&#x3002;</p>
+<p>Comparator&#x4E2D;compare&#x7684;&#x6BD4;&#x8F83;&#x8981;&#x4F7F;&#x7528;&#x6B27;&#x62C9;&#x516C;&#x5F0F;&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;">&#x4EE3;&#x7801;</h3>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.PriorityQueue;
+<span class="hljs-keyword">import</span> java.util.Queue;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@subject</span> 973.heap - &#x6700;&#x63A5;&#x8FD1;&#x539F;&#x70B9;&#x7684; K &#x4E2A;&#x70B9;
+ * <span class="hljs-doctag">@link</span>    https://leetcode-cn.com/problems/k-closest-points-to-origin/
+ * <span class="hljs-doctag">@level</span>   Normal
+ * <span class="hljs-doctag">@desc</span>    &#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x7531;&#x5E73;&#x9762;&#x4E0A;&#x7684;&#x70B9;&#x7EC4;&#x6210;&#x7684;&#x5217;&#x8868; points&#x3002;&#x9700;&#x8981;&#x4ECE;&#x4E2D;&#x627E;&#x51FA; K &#x4E2A;&#x8DDD;&#x79BB;&#x539F;&#x70B9; (0, 0) &#x6700;&#x8FD1;&#x7684;&#x70B9;&#x3002;
+ *
+ * &#xFF08;&#x8FD9;&#x91CC;&#xFF0C;&#x5E73;&#x9762;&#x4E0A;&#x4E24;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x662F;&#x6B27;&#x51E0;&#x91CC;&#x5FB7;&#x8DDD;&#x79BB;&#x3002;&#xFF09;
+ *
+ * &#x4F60;&#x53EF;&#x4EE5;&#x6309;&#x4EFB;&#x4F55;&#x987A;&#x5E8F;&#x8FD4;&#x56DE;&#x7B54;&#x6848;&#x3002;&#x9664;&#x4E86;&#x70B9;&#x5750;&#x6807;&#x7684;&#x987A;&#x5E8F;&#x4E4B;&#x5916;&#xFF0C;&#x7B54;&#x6848;&#x786E;&#x4FDD;&#x662F;&#x552F;&#x4E00;&#x7684;&#x3002;
+ *
+ * &#x793A;&#x4F8B; 1&#xFF1A;
+ *
+ * &#x8F93;&#x5165;&#xFF1A;points = [[1,3],[-2,2]], K = 1
+ * &#x8F93;&#x51FA;&#xFF1A;[[-2,2]]
+ * &#x89E3;&#x91CA;&#xFF1A;
+ * (1, 3) &#x548C;&#x539F;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4E3A; sqrt(10)&#xFF0C;
+ * (-2, 2) &#x548C;&#x539F;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4E3A; sqrt(8)&#xFF0C;
+ * &#x7531;&#x4E8E; sqrt(8) &lt; sqrt(10)&#xFF0C;(-2, 2) &#x79BB;&#x539F;&#x70B9;&#x66F4;&#x8FD1;&#x3002;
+ * &#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x8DDD;&#x79BB;&#x539F;&#x70B9;&#x6700;&#x8FD1;&#x7684; K = 1 &#x4E2A;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x7B54;&#x6848;&#x5C31;&#x662F; [[-2,2]]&#x3002;
+ * &#x793A;&#x4F8B; 2&#xFF1A;
+ *
+ * &#x8F93;&#x5165;&#xFF1A;points = [[3,3],[5,-1],[-2,4]], K = 2
+ * &#x8F93;&#x51FA;&#xFF1A;[[3,3],[-2,4]]
+ * &#xFF08;&#x7B54;&#x6848; [[-2,4],[3,3]] &#x4E5F;&#x4F1A;&#x88AB;&#x63A5;&#x53D7;&#x3002;&#xFF09;
+ *
+ *
+ * &#x63D0;&#x793A;&#xFF1A;
+ *
+ * 1 &lt;= K &lt;= points.length &lt;= 10000
+ * -10000 &lt; points[i][0] &lt; 10000
+ * -10000 &lt; points[i][1] &lt; 10000
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[][] kClosest(<span class="hljs-keyword">int</span>[][] points, <span class="hljs-keyword">int</span> K) {
+
+        <span class="hljs-comment">// &#x5927;&#x9876;&#x5806;</span>
+        PriorityQueue&lt;<span class="hljs-keyword">int</span>[]&gt; queue = <span class="hljs-keyword">new</span> PriorityQueue&lt;&gt;(K, <span class="hljs-keyword">new</span> Comparator&lt;<span class="hljs-keyword">int</span>[]&gt;() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] o1, <span class="hljs-keyword">int</span>[] o2)</span> </span>{
+                <span class="hljs-keyword">return</span> getDis(o2) - getDis(o1);
+            }
+        });
+
+        <span class="hljs-comment">// &#x53EA;&#x4FDD;&#x7559;&#x6700;&#x5C0F;&#x7684;K&#x4E2A;</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span>[] point : points){
+            <span class="hljs-keyword">if</span>(queue.size() &lt; K)
+                queue.add(point);
+            <span class="hljs-keyword">else</span>{
+                <span class="hljs-keyword">if</span>(getDis(point) &lt; getDis(queue.peek())){
+                    queue.poll();
+                    queue.add(point);
+                }
+            }
+        }
+
+        <span class="hljs-keyword">int</span>[][] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[K][];
+        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span> ;
+        <span class="hljs-keyword">while</span>(!queue.isEmpty()){
+            res[i ++] = queue.poll();
+        }
+        <span class="hljs-keyword">return</span> res;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getDis</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] point)</span></span>{
+        <span class="hljs-keyword">return</span> point[<span class="hljs-number">0</span>] * point[<span class="hljs-number">0</span>] + point[<span class="hljs-number">1</span>] * point[<span class="hljs-number">1</span>];
+    }
+}
+</code></pre>
+<hr>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="703_KthLargest.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 703.数据流中的第K大元素(Easy)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"973.最接近原点的 K 个点(Normal)","level":"1.3.2","depth":2,"previous":{"title":"703.数据流中的第K大元素(Easy)","level":"1.3.1","depth":2,"path":"content/heap/703_KthLargest.md","ref":"content/heap/703_KthLargest.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/heap/973_kClosest.md","mtime":"2019-04-01T02:46:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-01T02:44:02.559Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

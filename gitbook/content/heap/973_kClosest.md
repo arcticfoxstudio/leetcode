@@ -1,4 +1,4 @@
-973.heap - 数据流中的第K大元素
+973.heap - 最接近原点的 K 个点
 =======
 
 ---------
@@ -20,6 +20,7 @@ import java.util.Queue;
 /**
  * @subject 973.heap - 最接近原点的 K 个点
  * @link    https://leetcode-cn.com/problems/k-closest-points-to-origin/
+ * @level   Normal
  * @desc    我们有一个由平面上的点组成的列表 points。需要从中找出 K 个距离原点 (0, 0) 最近的点。
  *
  * （这里，平面上两点之间的距离是欧几里德距离。）
